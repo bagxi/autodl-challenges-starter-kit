@@ -1,0 +1,24 @@
+device: cuda:0
+cubnn_benchmark: true
+
+experiment_params:
+  n_epochs: 4
+
+data_params:
+  n_workers: 4
+  batch_size: 4
+
+model_params:
+  # model: OneHeadNet  # TODO
+  encoder_params:
+    name: resnet18
+    pretrained: imagenet
+    root: "./pretrained_models"
+
+transform:
+  train:
+    - name: normalize
+    - name: img_to_tensor
+  test:
+    - name: normalize
+    - name: img_to_tensor
